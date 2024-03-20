@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thecollage/controller/collage_controller.dart';
+import 'package:thecollage/views/second.dart';
 
 import '../widget/cust_container.dart';
 
@@ -41,10 +42,15 @@ class _HomeScreenState extends State<HomeScreen> {
           itemCount: controller.collageList.length,
           itemBuilder: (context, index) {
             var data = controller.collageList[index];
-            return Cust_container(
-              countryname: data.country,
-              coutrycode: data.name,
-              domainname: data.domains.first,
+            return InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Second(data: data.webPages[0],),));
+              },
+              child: Cust_container(
+                countryname: data.country,
+                coutrycode: data.name,
+                domainname: data.domains.first,
+              ),
             );
           },
         ),

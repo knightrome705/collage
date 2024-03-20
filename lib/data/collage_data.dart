@@ -6,7 +6,6 @@ class RemoteServices {
   static Future<List<Collage>?> fetchCollage() async {
     var response = await client
         .get(Uri.parse('http://universities.hipolabs.com/search?name=middle'));
-    print(response.body);
     if (response.statusCode == 200) {
       var jsonString = response.body;
       return collageFromJson(jsonString);

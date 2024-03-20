@@ -9,7 +9,7 @@ class CollageController extends GetxController {
     print(data);
     if (data != null) {
       collageList.value = data;
-      print(collageList.value);
+
     }
   }
   @override
