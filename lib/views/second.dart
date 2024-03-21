@@ -24,14 +24,14 @@ class _SecondState extends State<Second> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Details'),
+        title: const Text('Details',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
         backgroundColor: Colors.red,
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: launchUrl,
           style: ElevatedButton.styleFrom(
-            minimumSize: Size(200, 50),
+            minimumSize: const Size(200, 50),
             backgroundColor: Colors.red
           ),
           child: const Text('Launch URL',style: TextStyle(color: Colors.white),),

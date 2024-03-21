@@ -6,7 +6,6 @@ class CollageController extends GetxController {
   var collageList = <Collage>[].obs;
   void fetchDetails() async{
     var data =await RemoteServices.fetchCollage();
-    print(data);
     if (data != null) {
       collageList.value = data;
 

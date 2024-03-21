@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Cust_container extends StatelessWidget {
   String coutrycode,countryname,domainname;
-   Cust_container({
+  Cust_container({
     super.key,
     required this.countryname,
     required this.coutrycode,
@@ -29,7 +29,7 @@ class Cust_container extends StatelessWidget {
             )
           ]
       ),
-      height: 150,
+      height: 180,
       padding: const EdgeInsets.all(20),
       margin: const EdgeInsets.all(20),
       child:  Column(
@@ -42,8 +42,9 @@ class Cust_container extends StatelessWidget {
                 width: 10,
               ),
               Column(
-                children: [Text(countryname,style:GoogleFonts.truculenta(),),
-                  Text(coutrycode,style:GoogleFonts.truculenta())],
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [Text(countryname,style:GoogleFonts.truculenta(fontSize:20),),
+                  Text(coutrycode,style:GoogleFonts.truculenta(fontSize:20))],
               )
             ],
           ),
@@ -51,7 +52,7 @@ class Cust_container extends StatelessWidget {
             height: 20,
           ),
           Center(
-            child: Text(domainname,style:GoogleFonts.truculenta()),
+            child: Text(domainname,style:GoogleFonts.truculenta(fontSize:30)),
           )
         ],
       ),
