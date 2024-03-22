@@ -1,94 +1,88 @@
-// To parse this JSON data, do
-//
-//     final products = productsFromJson(jsonString);
+class ProductModel {
+  List<Products>? products;
+  int? total;
+  int? skip;
+  int? limit;
 
-import 'package:meta/meta.dart';
-import 'dart:convert';
+  ProductModel({this.products, this.total, this.skip, this.limit});
 
-Products productsFromJson(String str) => Products.fromJson(json.decode(str));
+  ProductModel.fromJson(Map<String, dynamic> json) {
+    if (json['products'] != null) {
+      products = <Products>[];
+      json['products'].forEach((v) {
+        products!.add(new Products.fromJson(v));
+      });
+    }
+    total = json['total'];
+    skip = json['skip'];
+    limit = json['limit'];
+  }
 
-String productsToJson(Products data) => json.encode(data.toJson());
-
-class Products {
-  List<Product> products;
-  int total;
-  int skip;
-  int limit;
-
-  Products({
-    required this.products,
-    required this.total,
-    required this.skip,
-    required this.limit,
-  });
-
-  factory Products.fromJson(Map<String, dynamic> json) => Products(
-    products: List<Product>.from(json["products"].map((x) => Product.fromJson(x))),
-    total: json["total"],
-    skip: json["skip"],
-    limit: json["limit"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "products": List<dynamic>.from(products.map((x) => x.toJson())),
-    "total": total,
-    "skip": skip,
-    "limit": limit,
-  };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.products != null) {
+      data['products'] = this.products!.map((v) => v.toJson()).toList();
+    }
+    data['total'] = this.total;
+    data['skip'] = this.skip;
+    data['limit'] = this.limit;
+    return data;
+  }
 }
 
-class Product {
-  int id;
-  String title;
-  String description;
-  int price;
-  double discountPercentage;
-  double rating;
-  int stock;
-  String brand;
-  String category;
-  String thumbnail;
-  List<String> images;
+class Products {
+  int? id;
+  String? title;
+  String? description;
+  int? price;
+  double? discountPercentage;
+  dynamic rating;
+  int? stock;
+  String? brand;
+  String? category;
+  String? thumbnail;
+  List<String>? images;
 
-  Product({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.price,
-    required this.discountPercentage,
-    required this.rating,
-    required this.stock,
-    required this.brand,
-    required this.category,
-    required this.thumbnail,
-    required this.images,
-  });
+  Products(
+      {this.id,
+        this.title,
+        this.description,
+        this.price,
+        this.discountPercentage,
+        this.rating,
+        this.stock,
+        this.brand,
+        this.category,
+        this.thumbnail,
+        this.images});
 
-  factory Product.fromJson(Map<String, dynamic> json) => Product(
-    id: json["id"],
-    title: json["title"],
-    description: json["description"],
-    price: json["price"],
-    discountPercentage: json["discountPercentage"].toDouble(),
-    rating: json["rating"].toDouble(),
-    stock: json["stock"],
-    brand: json["brand"],
-    category: json["category"],
-    thumbnail: json["thumbnail"],
-    images: List<String>.from(json["images"].map((x) => x)),
-  );
+  Products.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    description = json['description'];
+    price = json['price'];
+    discountPercentage = json['discountPercentage'];
+    rating = json['rating'];
+    stock = json['stock'];
+    brand = json['brand'];
+    category = json['category'];
+    thumbnail = json['thumbnail'];
+    // images = json['images'].cast<String>();
+  }
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "title": title,
-    "description": description,
-    "price": price,
-    "discountPercentage": discountPercentage,
-    "rating": rating,
-    "stock": stock,
-    "brand": brand,
-    "category": category,
-    "thumbnail": thumbnail,
-    "images": List<dynamic>.from(images.map((x) => x)),
-  };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
+    data['description'] = this.description;
+    data['price'] = this.price;
+    data['discountPercentage'] = this.discountPercentage;
+    data['rating'] = this.rating;
+    data['stock'] = this.stock;
+    data['brand'] = this.brand;
+    data['category'] = this.category;
+    data['thumbnail'] = this.thumbnail;
+    data['images'] = this.images;
+    return data;
+  }
 }

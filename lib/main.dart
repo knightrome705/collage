@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:thecollage/models/collage.dart';
-import 'package:thecollage/views/homeScreen.dart';
 import 'package:thecollage/views/product_screen.dart';
 
 void main() {
